@@ -1,11 +1,7 @@
 package com.example.myapplication;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +12,6 @@ import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
-import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
@@ -106,6 +101,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         InfoWindow infoWindow = new InfoWindow();
+
+        marker1.setOnClickListener(new Overlay.OnClickListener() {
+            @Override
+            public boolean onClick(@NonNull Overlay overlay) {
+
+                ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+                pointAdapter adapter = new pointAdapter(MainActivity.this, rootView);
+
+                infoWindow.setAdapter(adapter);
+                infoWindow.open(marker1);
+                return false;
+            }
+        });
 
 
     } //OnMapReady
