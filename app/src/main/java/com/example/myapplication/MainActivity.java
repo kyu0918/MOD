@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public boolean onClick(@NonNull Overlay overlay) {
 
                 ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
-                pointAdapter adapter = new pointAdapter(MainActivity.this, rootView);
+                PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
 
                 infoWindow.setAdapter(adapter);
                 infoWindow.open(marker1);

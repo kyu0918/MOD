@@ -11,12 +11,12 @@ import androidx.annotation.NonNull;
 
 import com.naver.maps.map.overlay.InfoWindow;
 
-class pointAdapter extends InfoWindow.DefaultViewAdapter
+class PointAdapter extends InfoWindow.DefaultViewAdapter
 {
     private final Context mContext;
     private final ViewGroup mParent;
 
-    public pointAdapter(@NonNull Context context, ViewGroup parent)
+    public PointAdapter(@NonNull Context context, ViewGroup parent)
     {
         super(context);
         mContext = context;
