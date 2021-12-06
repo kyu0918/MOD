@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         InfoWindow infoWindow = new InfoWindow();
 
+        naverMap.setOnMapClickListener((coord, point) ->{
+            infoWindow.close();
+        });
+
         marker1.setOnClickListener(new Overlay.OnClickListener() {
             @Override
             public boolean onClick(@NonNull Overlay overlay) {
@@ -110,8 +114,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
 
                 infoWindow.setAdapter(adapter);
-                infoWindow.open(marker1);
-                return false;
+                if (marker1.getInfoWindow() == null){
+                    infoWindow.open(marker1);
+                } else {
+                    infoWindow.close();
+                }
+                return true;
             }
         });
 
