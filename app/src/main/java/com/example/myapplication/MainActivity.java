@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
@@ -123,6 +124,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     infoWindow.close();
                 }
                 return true;
+
+            }
+
+        });
+
+        infoWindow.setOnClickListener(new Overlay.OnClickListener() {
+            @Override
+            public boolean onClick(@NonNull Overlay overlay) {
+                Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
+                startActivity(intent);
+                return false;
             }
         });
 
