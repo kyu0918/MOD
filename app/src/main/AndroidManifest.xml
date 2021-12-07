@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".ShopInfo"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -26,7 +29,5 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="ia9603oo7d" />
     </application>
-
-
 
 </manifest>

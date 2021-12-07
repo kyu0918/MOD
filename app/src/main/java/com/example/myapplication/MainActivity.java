@@ -102,10 +102,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         InfoWindow infoWindow = new InfoWindow();
 
+        //지도 클릭시 정보창 닫기
         naverMap.setOnMapClickListener((coord, point) ->{
             infoWindow.close();
         });
 
+        //마커1 클릭시
         marker1.setOnClickListener(new Overlay.OnClickListener() {
             @Override
             public boolean onClick(@NonNull Overlay overlay) {
@@ -115,7 +117,46 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 infoWindow.setAdapter(adapter);
                 if (marker1.getInfoWindow() == null){
+                    //현재 마커에 정보창이 없을 경우 열기
                     infoWindow.open(marker1);
+                } else {
+                    infoWindow.close();
+                }
+                return true;
+            }
+        });
+
+        //마커2 클릭시
+        marker2.setOnClickListener(new Overlay.OnClickListener() {
+            @Override
+            public boolean onClick(@NonNull Overlay overlay) {
+
+                ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+                PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
+
+                infoWindow.setAdapter(adapter);
+                if (marker2.getInfoWindow() == null){
+                    //현재 마커에 정보창이 없을 경우 열기
+                    infoWindow.open(marker2);
+                } else {
+                    infoWindow.close();
+                }
+                return true;
+            }
+        });
+
+        //마커3 클릭시
+        marker3.setOnClickListener(new Overlay.OnClickListener() {
+            @Override
+            public boolean onClick(@NonNull Overlay overlay) {
+
+                ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+                PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
+
+                infoWindow.setAdapter(adapter);
+                if (marker3.getInfoWindow() == null){
+                    //현재 마커에 정보창이 없을 경우 열기
+                    infoWindow.open(marker3);
                 } else {
                     infoWindow.close();
                 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShopInfo">
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/back"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/shopName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="가게 명"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/shopImage"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/ic_launcher_foreground"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/shopAddress"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="가게 주소"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/shopDrone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="보유 드론 수"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/shopTime"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="운영 시간"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+
+    <ImageButton
+        android:layout_marginTop="30dp"
+        android:id="@+id/shopSelectBtn"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:src="@drawable/shopselect"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"/>
+
+</LinearLayout>
