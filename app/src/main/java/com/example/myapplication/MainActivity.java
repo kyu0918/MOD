@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         marker3.setHeight(90);
         marker3.setIconPerspectiveEnabled(true); //마커 원근효과
         marker3.setIcon(MarkerIcons.YELLOW);
-        marker3.setCaptionText("진리관");
+        marker3.setCaptionText("백석홀");
         marker3.setCaptionTextSize(16);
 
 
