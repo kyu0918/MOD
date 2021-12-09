@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         marker1.setWidth(70);
         marker1.setHeight(90);
         marker1.setIconPerspectiveEnabled(true); //마커 원근효과
-        marker1.setCaptionText("김동규");
+        marker1.setCaptionText("본부동");
         marker1.setCaptionTextSize(16);
 
         Marker marker2 = new Marker();
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         marker2.setHeight(90);
         marker2.setIconPerspectiveEnabled(true); //마커 원근효과
         marker2.setIcon(MarkerIcons.BLUE);
-        marker2.setCaptionText("선경은");
+        marker2.setCaptionText("교수회관");
         marker2.setCaptionTextSize(16);
 
         Marker marker3 = new Marker();
@@ -97,15 +97,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         marker3.setHeight(90);
         marker3.setIconPerspectiveEnabled(true); //마커 원근효과
         marker3.setIcon(MarkerIcons.YELLOW);
-        marker3.setCaptionText("이호현");
+        marker3.setCaptionText("진리관");
         marker3.setCaptionTextSize(16);
 
 
         InfoWindow infoWindow = new InfoWindow();
+        InfoWindow infoWindow1 = new InfoWindow();
+        InfoWindow infoWindow2 = new InfoWindow();
 
         //지도 클릭시 정보창 닫기
         naverMap.setOnMapClickListener((coord, point) ->{
             infoWindow.close();
+            infoWindow1.close();
+            infoWindow2.close();
         });
 
         //마커1 클릭시
@@ -144,14 +148,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public boolean onClick(@NonNull Overlay overlay) {
 
                 ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
-                PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
+                PointAdapter1 adapter = new PointAdapter1(MainActivity.this, rootView);
 
-                infoWindow.setAdapter(adapter);
+                infoWindow1.setAdapter(adapter);
                 if (marker2.getInfoWindow() == null){
                     //현재 마커에 정보창이 없을 경우 열기
-                    infoWindow.open(marker2);
+                    infoWindow1.open(marker2);
                 } else {
-                    infoWindow.close();
+                    infoWindow1.close();
                 }
                 return true;
             }
@@ -163,14 +167,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public boolean onClick(@NonNull Overlay overlay) {
 
                 ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
-                PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
+                PointAdapter2 adapter = new PointAdapter2(MainActivity.this, rootView);
 
-                infoWindow.setAdapter(adapter);
+                infoWindow2.setAdapter(adapter);
                 if (marker3.getInfoWindow() == null){
                     //현재 마커에 정보창이 없을 경우 열기
-                    infoWindow.open(marker3);
+                    infoWindow2.open(marker3);
                 } else {
-                    infoWindow.close();
+                    infoWindow2.close();
                 }
                 return true;
             }
