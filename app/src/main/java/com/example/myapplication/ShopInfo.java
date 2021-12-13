@@ -22,5 +22,14 @@ public class ShopInfo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageButton shopSelect = findViewById(R.id.shopSelectBtn);
+        shopSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),DroneList.class);
+                startActivity(intent);
+            }
+        });
     }
 }

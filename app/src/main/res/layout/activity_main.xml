@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="샵이름을 입력하세요"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
-
     <!-- 네이버 지도 -->
     <com.naver.maps.map.MapView
         android:id="@+id/map_view"
