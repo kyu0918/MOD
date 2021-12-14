@@ -15,7 +15,6 @@ import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Marker;
-import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.util.MarkerIcons;
 
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
-    private MapView mapView;
     private static NaverMap naverMap;
 
     @Override
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
 
         //네이버 지도
-        mapView = (MapView) findViewById(R.id.map_view);
+        MapView mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(@NonNull NaverMap naverMap)
     {
-        this.naverMap = naverMap;
+        MainActivity.naverMap = naverMap;
         naverMap.getUiSettings().setLocationButtonEnabled(true);
 
         CameraPosition cameraPosition = new CameraPosition(
@@ -113,71 +111,58 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         //마커1 클릭시
-        marker1.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
+        marker1.setOnClickListener(overlay -> {
 
-                ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
-                PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
+            ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+            PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
 
-                infoWindow.setAdapter(adapter);
-                if (marker1.getInfoWindow() == null){
-                    //현재 마커에 정보창이 없을 경우 열기
-                    infoWindow.open(marker1);
-                } else {
-                    infoWindow.close();
-                }
-                return true;
-
+            infoWindow.setAdapter(adapter);
+            if (marker1.getInfoWindow() == null){
+                //현재 마커에 정보창이 없을 경우 열기
+                infoWindow.open(marker1);
+            } else {
+                infoWindow.close();
             }
+            return true;
 
         });
 
-        infoWindow.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
-                Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
-                startActivity(intent);
-                return false;
-            }
+        infoWindow.setOnClickListener(overlay -> {
+            Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
+            startActivity(intent);
+            return false;
         });
 
         //마커2 클릭시
-        marker2.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
+        marker2.setOnClickListener(overlay -> {
 
-                ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
-                PointAdapter1 adapter = new PointAdapter1(MainActivity.this, rootView);
+            ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+            PointAdapter1 adapter = new PointAdapter1(MainActivity.this, rootView);
 
-                infoWindow1.setAdapter(adapter);
-                if (marker2.getInfoWindow() == null){
-                    //현재 마커에 정보창이 없을 경우 열기
-                    infoWindow1.open(marker2);
-                } else {
-                    infoWindow1.close();
-                }
-                return true;
+            infoWindow1.setAdapter(adapter);
+            if (marker2.getInfoWindow() == null){
+                //현재 마커에 정보창이 없을 경우 열기
+                infoWindow1.open(marker2);
+            } else {
+                infoWindow1.close();
             }
+            return true;
         });
 
         //마커3 클릭시
-        marker3.setOnClickListener(new Overlay.OnClickListener() {
-            @Override
-            public boolean onClick(@NonNull Overlay overlay) {
+        marker3.setOnClickListener(overlay -> {
 
-                ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
-                PointAdapter2 adapter = new PointAdapter2(MainActivity.this, rootView);
+            ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+            PointAdapter2 adapter = new PointAdapter2(MainActivity.this, rootView);
 
-                infoWindow2.setAdapter(adapter);
-                if (marker3.getInfoWindow() == null){
-                    //현재 마커에 정보창이 없을 경우 열기
-                    infoWindow2.open(marker3);
-                } else {
-                    infoWindow2.close();
-                }
-                return true;
+            infoWindow2.setAdapter(adapter);
+            if (marker3.getInfoWindow() == null){
+                //현재 마커에 정보창이 없을 경우 열기
+                infoWindow2.open(marker3);
+            } else {
+                infoWindow2.close();
             }
+            return true;
         });
 
 

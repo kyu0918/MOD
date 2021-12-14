@@ -1,8 +1,8 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,6 @@ import java.util.List;
 
 public class DroneList extends AppCompatActivity {
 
-    private View view;
     private DroneListAdapter adapter;
 
     @Override
@@ -23,12 +22,9 @@ public class DroneList extends AppCompatActivity {
         setContentView(R.layout.activity_drone_list);
 
         ImageButton back = findViewById(R.id.backBtn);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
-                startActivity(intent);
-            }
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
+            startActivity(intent);
         });
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView_droneList);
@@ -42,6 +38,7 @@ public class DroneList extends AppCompatActivity {
         getData();
     } //onCreate
 
+    @SuppressLint("NotifyDataSetChanged")
     private void getData() {
         List<String> titleList = Arrays.asList("MOD-김동규","MOD-이호현","MOD-선경은","MOD-백석");
         List<String> contentList = Arrays.asList("2.1KG","1.7KG","1.8KG","0.7KG");

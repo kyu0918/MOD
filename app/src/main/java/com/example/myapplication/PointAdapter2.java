@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +24,7 @@ class PointAdapter2 extends InfoWindow.DefaultViewAdapter
         mParent = parent;
     }
 
-    public PointAdapter2(@NonNull Context context, Context mContext, ViewGroup mParent) {
-        super(context);
-        this.mContext = mContext;
-        this.mParent = mParent;
-    }
-
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     protected View getContentView(@NonNull InfoWindow infoWindow2)

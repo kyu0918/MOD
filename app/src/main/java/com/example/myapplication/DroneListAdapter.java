@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class DroneListAdapter extends RecyclerView.Adapter<DroneListAdapter.ViewHolder> {
 
-    private ArrayList<DroneListData> dataList = new ArrayList<>();
+    private final ArrayList<DroneListData> dataList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -35,17 +35,14 @@ public class DroneListAdapter extends RecyclerView.Adapter<DroneListAdapter.View
     public void onBindViewHolder(@NonNull DroneListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.onBind(dataList.get(position));
 
-        holder.item_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DroneInformation.class);
-                intent.putExtra("number", position);
-                intent.putExtra("title", dataList.get(position).getTitle());
-                intent.putExtra("content", dataList.get(position).getContent());
-                intent.putExtra("price", dataList.get(position).getPrice());
-                v.getContext().startActivity(intent);
-                Toast.makeText(v.getContext(), "드론을 선택하셨습니다.", Toast.LENGTH_SHORT).show();
-            }
+        holder.item_list.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), DroneInformation.class);
+            intent.putExtra("number", position);
+            intent.putExtra("title", dataList.get(position).getTitle());
+            intent.putExtra("content", dataList.get(position).getContent());
+            intent.putExtra("price", dataList.get(position).getPrice());
+            v.getContext().startActivity(intent);
+            Toast.makeText(v.getContext(), "드론을 선택하셨습니다.", Toast.LENGTH_SHORT).show();
         });
 
 
@@ -60,11 +57,13 @@ public class DroneListAdapter extends RecyclerView.Adapter<DroneListAdapter.View
         dataList.add(data);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView1,textView2,textView3;
-        private ImageView imageView;
-        private LinearLayout item_list;
+        private final TextView textView1;
+        private final TextView textView2;
+        private final TextView textView3;
+        private final ImageView imageView;
+        private final LinearLayout item_list;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
