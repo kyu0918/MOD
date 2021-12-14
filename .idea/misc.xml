@@ -5,7 +5,8 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25092592592592594" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.25092592592592594" />
-        <entry key="app/src/main/res/layout/activity_drone_list.xml" value="0.2475972750208514" />
+        <entry key="app/src/main/res/layout/activity_drone_information.xml" value="0.16574997214804826" />
+        <entry key="app/src/main/res/layout/activity_drone_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_drone_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/activity_shop_info.xml" value="0.25" />

@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,8 +32,21 @@ public class DroneListAdapter extends RecyclerView.Adapter<DroneListAdapter.View
 
     // ViewHolder 에 각각의 항목들을 바인딩시킨다.
     @Override
-    public void onBindViewHolder(@NonNull DroneListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DroneListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.onBind(dataList.get(position));
+
+        holder.item_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DroneInformation.class);
+                intent.putExtra("number", position);
+                intent.putExtra("title", dataList.get(position).getTitle());
+                intent.putExtra("content", dataList.get(position).getContent());
+                intent.putExtra("price", dataList.get(position).getPrice());
+                v.getContext().startActivity(intent);
+                Toast.makeText(v.getContext(), "드론을 선택하셨습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

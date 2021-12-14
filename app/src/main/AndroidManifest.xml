@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".DroneInformation"
+            android:exported="false" />
+        <activity
             android:name=".DroneList"
             android:exported="false" />
         <activity
