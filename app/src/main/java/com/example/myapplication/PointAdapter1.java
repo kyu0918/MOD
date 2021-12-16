@@ -30,12 +30,12 @@ class PointAdapter1 extends InfoWindow.DefaultViewAdapter
     protected View getContentView(@NonNull InfoWindow infoWindow1)
     {
 
-        View view = (View) LayoutInflater.from(mContext).inflate(R.layout.item_point, mParent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_point, mParent, false);
 
-        TextView txtTitle = (TextView) view.findViewById(R.id.txttitle);
-        ImageView imagePoint = (ImageView) view.findViewById(R.id.imagepoint);
-        TextView txtAddr = (TextView) view.findViewById(R.id.txtaddr);
-        TextView txtTel = (TextView) view.findViewById(R.id.txttel);
+        TextView txtTitle = view.findViewById(R.id.txttitle);
+        ImageView imagePoint = view.findViewById(R.id.imagepoint);
+        TextView txtAddr = view.findViewById(R.id.txtaddr);
+        TextView txtTel = view.findViewById(R.id.txttel);
 
         txtTitle.setText("교수회관 드론 대여");
         imagePoint.setImageResource(R.drawable.kyosu);

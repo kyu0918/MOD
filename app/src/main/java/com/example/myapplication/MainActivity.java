@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
 
         //네이버 지도
-        MapView mapView = (MapView) findViewById(R.id.map_view);
+        MapView mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         //마커1 클릭시
         marker1.setOnClickListener(overlay -> {
 
-            ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+            ViewGroup rootView = findViewById(R.id.map_view);
             PointAdapter adapter = new PointAdapter(MainActivity.this, rootView);
 
             infoWindow.setAdapter(adapter);
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         //마커2 클릭시
         marker2.setOnClickListener(overlay -> {
 
-            ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+            ViewGroup rootView = findViewById(R.id.map_view);
             PointAdapter1 adapter = new PointAdapter1(MainActivity.this, rootView);
 
             infoWindow1.setAdapter(adapter);
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         //마커3 클릭시
         marker3.setOnClickListener(overlay -> {
 
-            ViewGroup rootView = (ViewGroup) findViewById(R.id.map_view);
+            ViewGroup rootView = findViewById(R.id.map_view);
             PointAdapter2 adapter = new PointAdapter2(MainActivity.this, rootView);
 
             infoWindow2.setAdapter(adapter);
