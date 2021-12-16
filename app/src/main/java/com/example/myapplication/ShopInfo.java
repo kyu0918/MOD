@@ -21,7 +21,7 @@ public class ShopInfo extends AppCompatActivity {
 
         ImageButton shopSelect = findViewById(R.id.shopSelectBtn);
         shopSelect.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),DroneList.class);
+            Intent intent = new Intent(getApplicationContext(),RentalPeriod.class);
             startActivity(intent);
         });
     }
