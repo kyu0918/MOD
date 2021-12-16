@@ -23,7 +23,7 @@ public class DroneList extends AppCompatActivity {
 
         ImageButton back = findViewById(R.id.backBtn);
         back.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
+            Intent intent = new Intent(getApplicationContext(),RentalPeriod.class);
             startActivity(intent);
         });
 

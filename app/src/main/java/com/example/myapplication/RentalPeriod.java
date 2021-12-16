@@ -2,10 +2,12 @@ package com.example.myapplication;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,7 +72,7 @@ public class RentalPeriod extends AppCompatActivity {
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(RentalPeriod.this, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(RentalPeriod.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         String state = "AM";
@@ -83,11 +85,49 @@ public class RentalPeriod extends AppCompatActivity {
                         startTime.setText(state + " " + selectedHour + "시 " + selectedMinute + "분");
                     }
                 }, hour, minute, false);
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle("대여할 시간을 고르세요");
                 mTimePicker.show();
             }
         });
-    }
+
+        final EditText endTime = (EditText) findViewById(R.id.EndTime);
+        endTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime1 = Calendar.getInstance();
+                int hour = mcurrentTime1.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime1.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker1;
+                mTimePicker1 = new TimePickerDialog(RentalPeriod.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker1, int selectedHour, int selectedMinute) {
+                        String state = "AM";
+
+                        if (selectedHour > 12) {
+                            selectedHour -= 12;
+                            state = "PM";
+                        }
+
+                        endTime.setText(state + " " + selectedHour + "시 " + selectedMinute + "분");
+                    }
+                }, hour, minute, false);
+                mTimePicker1.setTitle("반납할 시간을 고르세요");
+                mTimePicker1.show();
+            }
+        });
+
+        ImageButton timeSelect = findViewById(R.id.timeSelectBtn);
+        timeSelect.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),DroneList.class);
+            startActivity(intent);
+        });
+
+        ImageButton back = findViewById(R.id.backBtn);
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),ShopInfo.class);
+            startActivity(intent);
+        });
+    } //onCreate
 
     private void updateLabel() {
         String myFormat = "yyyy/MM/dd";
