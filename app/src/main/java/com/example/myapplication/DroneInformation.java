@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -37,13 +36,7 @@ public class DroneInformation extends AppCompatActivity {
 
         //커스텀 다이얼로그 버튼
         ImageButton droneSelect = findViewById(R.id.droneSelectBtn);
-        droneSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog();
-
-            }
-        });
+        droneSelect.setOnClickListener(v -> showDialog());
 
         Intent intent = getIntent();
         int number = intent.getIntExtra("number", -1);
@@ -120,28 +113,17 @@ public class DroneInformation extends AppCompatActivity {
         dialog.show();
 
         Button cancleBtn = dialog.findViewById(R.id.cancelBtn);
-        cancleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        cancleBtn.setOnClickListener(v -> dialog.dismiss());
 
         Button linkBtn = dialog.findViewById(R.id.linkBtn);
-        linkBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentUrl = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drone.onestop.go.kr/"));
-                startActivity(intentUrl);
-            }
+        linkBtn.setOnClickListener(v -> {
+            Intent intentUrl = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drone.onestop.go.kr/"));
+            startActivity(intentUrl);
         });
 
         Button okBtn = dialog.findViewById(R.id.okBtn);
-        okBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        okBtn.setOnClickListener(v -> {
 
-            }
         });
     }
 }

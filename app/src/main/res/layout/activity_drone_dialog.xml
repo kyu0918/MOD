@@ -17,12 +17,12 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white"
         android:textColor="@color/black"
         android:padding="10dp"
-        android:text="2KG가 초과하는 드론은 사전 신청이 필요합니다.\n대여 전 비행 승인을 거치지 않고 운행시 이에 대한 모든 법적 책임은 본인에게 있음을 알려 드립니다."
+        android:text="@string/popup_context"
         android:textSize="14sp" />
     
     <LinearLayout
