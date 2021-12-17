@@ -123,6 +123,8 @@ public class DroneInformation extends AppCompatActivity {
 
         Button okBtn = dialog.findViewById(R.id.okBtn);
         okBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),Payment.class);
+            startActivity(intent);
 
         });
     }
