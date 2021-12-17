@@ -1,8 +1,13 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +15,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DroneInformation extends AppCompatActivity {
+
+    Dialog dialog; //Custom Dialog
 
 
     @SuppressLint("SetTextI18n")
@@ -22,6 +29,20 @@ public class DroneInformation extends AppCompatActivity {
         back.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),DroneList.class);
             startActivity(intent);
+        });
+
+        dialog = new Dialog(DroneInformation.this); //Dialog 초기화
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
+        dialog.setContentView(R.layout.activity_drone_dialog);
+
+        //커스텀 다이얼로그 버튼
+        ImageButton droneSelect = findViewById(R.id.droneSelectBtn);
+        droneSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+
+            }
         });
 
         Intent intent = getIntent();
@@ -93,5 +114,34 @@ public class DroneInformation extends AppCompatActivity {
 
                 break;
         }
+    } //onCreate
+
+    public void showDialog() {
+        dialog.show();
+
+        Button cancleBtn = dialog.findViewById(R.id.cancelBtn);
+        cancleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        Button linkBtn = dialog.findViewById(R.id.linkBtn);
+        linkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentUrl = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drone.onestop.go.kr/"));
+                startActivity(intentUrl);
+            }
+        });
+
+        Button okBtn = dialog.findViewById(R.id.okBtn);
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
